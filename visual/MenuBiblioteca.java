@@ -1,25 +1,35 @@
 package visual;
 
 import java.awt.EventQueue;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import java.awt.Window.Type;
-import javax.swing.JPopupMenu;
-import java.awt.Component;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.JButton;
-import java.awt.BorderLayout;
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
-import javax.swing.JTable;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
-public class MenuBiblioteca {
+public class MenuBiblioteca extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private Fondito contentPane;
+	
+
+	
 	private JFrame frmBibliotecaUneVersion;
+	private JButton btnSalir;
+	private JButton btnLector;
+	private JButton btnLibro;
+	private JButton btnPrestamo;
 
 	/**
 	 * Launch the application.
@@ -29,6 +39,9 @@ public class MenuBiblioteca {
 			public void run() {
 				try {
 					MenuBiblioteca window = new MenuBiblioteca();
+					window.frmBibliotecaUneVersion.setResizable(false);
+					window.frmBibliotecaUneVersion.setLocationRelativeTo(null);
+		
 					window.frmBibliotecaUneVersion.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,10 +62,17 @@ public class MenuBiblioteca {
 	 */
 	private void initialize() {
 		frmBibliotecaUneVersion = new JFrame();
+		frmBibliotecaUneVersion.setIconImage(Toolkit.getDefaultToolkit().getImage(MenuBiblioteca.class.getResource("/imagen/images.jpg")));
 		frmBibliotecaUneVersion.setType(Type.POPUP);
 		frmBibliotecaUneVersion.setTitle("BIBLIOTECA UNE");
-		frmBibliotecaUneVersion.setBounds(100, 100, 800, 600);
+		frmBibliotecaUneVersion.setBounds(100, 100, 1366, 768);
 		frmBibliotecaUneVersion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		contentPane = new Fondito("/imagen/images.jpg");
+	
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
 		JMenuBar menuBar = new JMenuBar();
 		frmBibliotecaUneVersion.setJMenuBar(menuBar);
@@ -73,6 +93,20 @@ public class MenuBiblioteca {
 		mnTabla.add(mntmNewMenuItem);
 		
 		JMenuItem mntmEditorial = new JMenuItem("Editorial");
+		mntmEditorial.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				AbmEditor abmEditor = new AbmEditor();
+				abmEditor.setSize(800, 600);
+				abmEditor.setResizable(false);
+				abmEditor.setLocationRelativeTo(null);
+				abmEditor.setAlwaysOnTop(true);
+				abmEditor.setVisible(true);
+				
+				//frmBibliotecaUneVersion.setEnabled(false);
+				
+			}
+		});
 		mnTabla.add(mntmEditorial);
 		
 		JMenu mnNewMenu = new JMenu("Informes");
@@ -101,40 +135,61 @@ public class MenuBiblioteca {
 		
 		JMenuItem mntmConfiguraciones = new JMenuItem("Configuraciones");
 		mnUtilidades.add(mntmConfiguraciones);
+		
+	;
 		frmBibliotecaUneVersion.getContentPane().setLayout(null);
 		
-		JButton btnNewButton = new JButton("Pr\u00E9stamo");
-		btnNewButton.setBounds(0, 0, 95, 60);
-		frmBibliotecaUneVersion.getContentPane().add(btnNewButton);
+		btnPrestamo = new JButton("Pr\u00E9stamo");
+		btnPrestamo.setVerticalTextPosition(SwingConstants.BOTTOM);
+		btnPrestamo.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnPrestamo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnPrestamo.setIcon(new ImageIcon(MenuBiblioteca.class.getResource("/imagen/glyphicons-319-more-items.png")));
+		btnPrestamo.setBounds(0, 0, 95, 60);
+		frmBibliotecaUneVersion.getContentPane().add(btnPrestamo);
 		
-		JButton btnNewButton_1 = new JButton("Libros");
-		btnNewButton_1.setBounds(101, 0, 95, 60);
-		frmBibliotecaUneVersion.getContentPane().add(btnNewButton_1);
+		btnLibro = new JButton("Libros");
+		btnLibro.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnLibro.setVerticalTextPosition(SwingConstants.BOTTOM);
+		btnLibro.setIcon(new ImageIcon(MenuBiblioteca.class.getResource("/imagen/glyphicons-72-book.png")));
+		btnLibro.setBounds(101, 0, 95, 60);
+		frmBibliotecaUneVersion.getContentPane().add(btnLibro);
 		
-		JButton btnNewButton_2 = new JButton("Lector");
-		btnNewButton_2.setBounds(202, 0, 95, 60);
-		frmBibliotecaUneVersion.getContentPane().add(btnNewButton_2);
+		btnLector = new JButton("Lector");
+		btnLector.setVerticalTextPosition(SwingConstants.BOTTOM);
+		btnLector.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnLector.setIcon(new ImageIcon(MenuBiblioteca.class.getResource("/imagen/glyphicons-527-user-conversation.png")));
+		btnLector.setBounds(202, 0, 95, 60);
+		frmBibliotecaUneVersion.getContentPane().add(btnLector);
 		
-		JButton btnSalir = new JButton("Salir");
+		btnSalir = new JButton("Salir");
+		btnSalir.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnSalir.setVerticalTextPosition(SwingConstants.BOTTOM);
+		btnSalir.setIcon(new ImageIcon(MenuBiblioteca.class.getResource("/imagen/glyphicons-389-exit.png")));
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				dispose();
+				
+			}
+		});
 		btnSalir.setBounds(301, 0, 95, 60);
 		frmBibliotecaUneVersion.getContentPane().add(btnSalir);
 	}
 
-	private static void addPopup(Component component, final JPopupMenu popup) {
-		component.addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-			}
-			public void mouseReleased(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-			}
-			private void showMenu(MouseEvent e) {
-				popup.show(e.getComponent(), e.getX(), e.getY());
-			}
-		});
+
+	public JButton getBtnSalir() {
+		return btnSalir;
+	}
+	public JButton getBtnLector() {
+		return btnLector;
+	}
+	public JButton getBtnLibro() {
+		return btnLibro;
+	}
+	public JButton getBtnPrestamo() {
+		return btnPrestamo;
 	}
 }
