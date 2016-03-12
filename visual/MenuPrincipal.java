@@ -29,7 +29,8 @@ public class MenuPrincipal extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MenuPrincipal frame = new MenuPrincipal();Dimension screanSize = Toolkit.getDefaultToolkit()
+					MenuPrincipal frame = new MenuPrincipal();
+					Dimension screanSize = Toolkit.getDefaultToolkit()
 							.getScreenSize();
 					// muestra en pantalla la resolucion actual
 					//JOptionPane.showMessageDialog(null, screanSize);
@@ -72,6 +73,7 @@ public class MenuPrincipal extends JFrame {
 		menuBar.add(mnPr);
 		
 		JMenuItem mntmRegistrar = new JMenuItem("Registrar Pr\u00E9stamos");
+		mntmRegistrar.setEnabled(false);
 		mnPr.add(mntmRegistrar);
 		
 		JMenu mnTablas = new JMenu("Tablas");
@@ -103,23 +105,23 @@ public class MenuPrincipal extends JFrame {
 		JMenuItem mntmInformes = new JMenuItem("Listado de Libros");
 		mnInformes.add(mntmInformes);
 		
-		JMenuItem mntmListadoDe = new JMenuItem("Listado de Lector");
-		mnInformes.add(mntmListadoDe);
+		JMenuItem mntmListadoDeLector = new JMenuItem("Listado de Lector");
+		mnInformes.add(mntmListadoDeLector);
 		
 		JMenuItem mntmListadoDeEditorial = new JMenuItem("Listado de Editorial");
 		mnInformes.add(mntmListadoDeEditorial);
 		
-		JMenuItem mntmInformeDePrstamos = new JMenuItem("Informe de Pr\u00E9stamos");
-		mnInformes.add(mntmInformeDePrstamos);
+		JMenuItem mntmInformeDePrestamos = new JMenuItem("Informe de Pr\u00E9stamos");
+		mnInformes.add(mntmInformeDePrestamos);
 		
-		JMenuItem mntmInformesDeLibros = new JMenuItem("Informe de Deudas");
-		mnInformes.add(mntmInformesDeLibros);
+		JMenuItem mntmInformeDeDeudas = new JMenuItem("Informe de Deudas");
+		mnInformes.add(mntmInformeDeDeudas);
 		
 		JMenu mnUtilidades = new JMenu("Utilidades");
 		menuBar.add(mnUtilidades);
 		
-		JMenuItem mntmInicializacinDeDatos = new JMenuItem("Inicializaci\u00F3n de Datos");
-		mnUtilidades.add(mntmInicializacinDeDatos);
+		JMenuItem mntmInicializacionDeDatos = new JMenuItem("Inicializaci\u00F3n de Datos");
+		mnUtilidades.add(mntmInicializacionDeDatos);
 		
 		JMenuItem mntmConfiguraciones = new JMenuItem("Configuraciones");
 		mnUtilidades.add(mntmConfiguraciones);
