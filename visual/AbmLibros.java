@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Rectangle;
 
-public class ABMLibros extends JFrame {
+public class AbmLibros extends JFrame {
 
 	private JPanel contentPane;
 
@@ -19,7 +19,7 @@ public class ABMLibros extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ABMLibros frame = new ABMLibros();
+					AbmLibros frame = new AbmLibros();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -31,7 +31,7 @@ public class ABMLibros extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ABMLibros() {
+	public AbmLibros() {
 		setBounds(new Rectangle(0, 0, 800, 600));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
